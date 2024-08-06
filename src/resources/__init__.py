@@ -1,1 +1,1 @@
-from .user import UserResource
+from .slot_machine import SlotMachineResource

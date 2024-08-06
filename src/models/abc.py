@@ -4,7 +4,7 @@ Define an Abstract Base Class (ABC) for models
 from datetime import datetime
 from weakref import WeakValueDictionary
 
-from sqlalchemy import inspect
+from sqlalchemy import inspect, func
 from sqlalchemy.orm import aliased
 
 from . import db
@@ -33,6 +33,11 @@ class BaseModel:
 
     print_filter = ()
     to_json_filter = ()
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    created_at = db.Column(db.DateTime, server_default=func.now())
+    updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
+    deleted_at = db.Column(db.DateTime, nullable=True)
 
     def __repr__(self):
         """ Define a base way to print models

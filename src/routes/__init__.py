@@ -1,1 +1,1 @@
-from .user import USER_BLUEPRINT
+from .slot_machine import SLOT_MACHINE_BLUEPRINT

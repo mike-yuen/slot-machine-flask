@@ -1,24 +1,16 @@
-Update an user based on the sent information
+Spin the slot machine
 ---
 tags:
-  - user
+  - slot_machine
 parameters:
-  - name: last_name
-    in: path
-    type: string
-    description: the last name of the user
-  - name: first_name
-    in: path
-    type: string
-    description: the last name of the user
   - name: body
     in: body
     schema:
       type: object
       properties:
-        age:
+        bet:
           type: integer
-          description: The age of the user
+          description: The bet amount of the user
 responses:
   200:
     description: The user was successfully created

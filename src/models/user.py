@@ -3,6 +3,7 @@ Define the User model
 """
 from . import db
 from .abc import BaseModel, MetaBaseModel
+from sqlalchemy.dialects.mysql import INTEGER
 
 
 class User(db.Model, BaseModel, metaclass=MetaBaseModel):
@@ -10,12 +11,14 @@ class User(db.Model, BaseModel, metaclass=MetaBaseModel):
 
     __tablename__ = "user"
 
-    first_name = db.Column(db.String(300), primary_key=True)
-    last_name = db.Column(db.String(300), primary_key=True)
-    age = db.Column(db.Integer, nullable=True)
+    email = db.Column(db.String(500), unique=True, nullable=True)
+    name = db.Column(db.String(64), nullable=True)
+    picture = db.Column(db.String(255), nullable=True)
+    chip = db.Column(INTEGER(unsigned=True), nullable=True)
 
-    def __init__(self, first_name, last_name, age=None):
+    def __init__(self, email, name, picture, chip):
         """ Create a new User """
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
+        self.email = email
+        self.name = name
+        self.picture = picture
+        self.chip = chip

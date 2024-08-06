@@ -4,6 +4,7 @@ from flask.blueprints import Blueprint
 
 import config
 import routes
+from middleware import CookieMiddleWare
 from models import db
 
 # config your API specs
@@ -13,6 +14,7 @@ from models import db
 #   returns a boolean to filter in only desired views
 
 server = Flask(__name__)
+server.wsgi_app = CookieMiddleWare(server.wsgi_app)
 
 server.config["SWAGGER"] = {
     "swagger_version": "2.0",
