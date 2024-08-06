@@ -1,5 +1,9 @@
 import logging
 import os
+from dotenv import load_dotenv
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, os.pardir, '.env'))
 
 DEBUG = os.getenv("ENVIRONEMENT") == "DEV"
 APPLICATION_ROOT = os.getenv("APPLICATION_APPLICATION_ROOT", "/application")
