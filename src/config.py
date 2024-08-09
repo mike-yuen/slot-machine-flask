@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, os.pardir, '.env'))
 
 DEBUG = os.getenv("ENVIRONEMENT") == "DEV"
-APPLICATION_ROOT = os.getenv("APPLICATION_APPLICATION_ROOT", "/application")
+APPLICATION_ROOT = f"/{os.getenv("APPLICATION_API_ROOT", "application")}"
 HOST = os.getenv("APPLICATION_HOST")
 PORT = int(os.getenv("APPLICATION_PORT", "3000"))
 SQLALCHEMY_TRACK_MODIFICATIONS = False

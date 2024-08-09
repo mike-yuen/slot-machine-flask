@@ -22,5 +22,5 @@ class SlotMachineResource(Resource):
     def post(bet):
         """ Spin the slot machine based on the bet amount """
         repository = UserRepository()
-        user = repository.get(1)
+        user = repository.get(7)
         return jsonify({"user": user.json})

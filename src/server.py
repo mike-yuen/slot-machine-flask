@@ -18,11 +18,11 @@ server.wsgi_app = CookieMiddleWare(server.wsgi_app)
 
 server.config["SWAGGER"] = {
     "swagger_version": "2.0",
-    "title": "Application",
+    "title": "Slot Machine API Docs",
     "specs": [
         {
             "version": "0.0.1",
-            "title": "Application",
+            "title": "Slot Machine API Docs",
             "endpoint": "spec",
             "route": "/application/spec",
             "rule_filter": lambda rule: True,  # all in
