@@ -20,12 +20,10 @@ from app.crud.slot import SlotMachineService
 router = APIRouter()
 
 
-@router.get("/random-slot/")
-def get_channels_view(
-    skip: int = 0,
-    limit: int = 100,
+@router.post("/random")
+def randomize_result(
+    bet: int = 10,
     db: Session = Depends(get_db),
-    search: Optional[str] = None,
     # current_user: models.User = Depends(get_current_user),
 ):
     print(SlotMachineService().run_slot_session())

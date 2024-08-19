@@ -1,5 +1,5 @@
-from app.routers import views
+from app.routers import slot_session
 from fastapi import APIRouter
 
 api_router = APIRouter()
-api_router.include_router(views.router, prefix="/users", tags=["users"])
+api_router.include_router(slot_session.router, prefix="/slot-sessions", tags=["Slot Session"])
