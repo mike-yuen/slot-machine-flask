@@ -1,7 +1,8 @@
 import logging
 
-from app import choices, models
+from app import choices
 from app.config.db.session import SessionLocal
+from app.models import user
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -20,7 +21,7 @@ def init() -> None:
     type_create = []
     for i in types:
         type_create.append(
-            models.MessageType(name=i, key=i)  # type:ignore
+            user.MessageType(name=i, key=i)  # type:ignore
         )
     db.bulk_save_objects(type_create)
     db.commit()

@@ -1,4 +1,4 @@
-from app.api.urls import api_router
+from app.routers.urls import api_router
 from fastapi import FastAPI
 
 app = FastAPI(title="SlotMachine")

@@ -1,4 +1,4 @@
-from app.api import views
+from app.routers import views
 from fastapi import APIRouter
 
 api_router = APIRouter()

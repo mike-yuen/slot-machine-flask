@@ -10,5 +10,5 @@ DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:123@localho
 
 SEVEN_PROBABILITY = os.environ.get("SEVEN_PROBABILITY", 0.02)
 
-JWT_PUBLIC_KEY_PATH = os.environ.get("JWT_PUBLIC_KEY_PATH", default="jwt_api_key.pub")
-JWT_PUBLIC_KEY = open(JWT_PUBLIC_KEY_PATH).read()
+# JWT_PUBLIC_KEY_PATH = os.environ.get("JWT_PUBLIC_KEY_PATH", default="jwt_api_key.pub")
+# JWT_PUBLIC_KEY = open(JWT_PUBLIC_KEY_PATH).read()
