@@ -49,3 +49,4 @@ local.yml
 jwt_*
 
 .mypy_cache
+server.log
