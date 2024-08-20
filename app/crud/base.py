@@ -1,6 +1,6 @@
 from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
 
-from app.config.db.base_class import Base
+from app.config.database import Base
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from sqlalchemy.orm import Session

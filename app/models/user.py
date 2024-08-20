@@ -1,6 +1,6 @@
 from uuid import uuid4
 
-from app.config.db.base_class import Base
+from app.config.database import Base
 from sqlalchemy import (
     Column,
     Integer,
