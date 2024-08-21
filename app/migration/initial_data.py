@@ -1,7 +1,7 @@
 import logging
 
 from app import choices
-from app.config.db.session import SessionLocal
+from app.config.database import SessionLocal
 from app.models import user
 
 logging.basicConfig(level=logging.INFO)

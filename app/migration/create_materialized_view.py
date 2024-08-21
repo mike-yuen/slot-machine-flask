@@ -1,6 +1,6 @@
 import logging
 
-from app.config.db.session import engine
+from app.config.database import engine
 from sqlalchemy.ext.declarative import DeferredReflection
 
 logging.basicConfig(level=logging.INFO)

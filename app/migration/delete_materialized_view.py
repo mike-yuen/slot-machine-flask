@@ -1,4 +1,4 @@
-from app.config.db.session import engine
+from app.config.database import engine
 
 
 def handle():
