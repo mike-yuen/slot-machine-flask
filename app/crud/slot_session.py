@@ -2,7 +2,7 @@ import random
 from app.config import settings
 
 
-class SlotMachineService:
+class SlotSessionCrud:
     def run_slot_session(self):
         # check if total profit is lowest now
         # run slot session

@@ -4,7 +4,7 @@ from logging.config import fileConfig
 
 from alembic import context
 from app.config import settings
-from app.config.db.base import Base  # noqa
+from app.config.database import Base  # noqa
 from sqlalchemy import engine_from_config, pool
 
 # this is the Alembic Config object, which provides
