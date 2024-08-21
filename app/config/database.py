@@ -1,13 +1,17 @@
-from app.config import settings
-from sqlalchemy import create_engine, event
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import as_declarative, declared_attr
+from os.path import dirname, join
 from typing import Any
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import as_declarative, declared_attr
 
-SQLALCHEMY_DATABASE_URI = settings.DATABASE_URL
+from app.config import settings
 
-engine = create_engine(SQLALCHEMY_DATABASE_URI, pool_pre_ping=True)
+SQLALCHEMY_DATABASE_URI = settings.APPLICATION_POSTGRES_URL
+
+ssl_args = {"sslrootcert": join(dirname(__file__), "ca.pem")}
+
+engine = create_engine(SQLALCHEMY_DATABASE_URI, pool_pre_ping=True, connect_args=ssl_args)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -29,8 +33,3 @@ def get_db():
         yield db
     finally:
         db.close()
-
-
-# @event.listens_for(SessionLocal, "before_commit")
-# def before_commit(session):
-#     handle_before_commit(session)

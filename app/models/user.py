@@ -1,16 +1,14 @@
-from uuid import uuid4
-
-from app.config.database import Base
 from sqlalchemy import (
     Column,
     Integer,
     String,
 )
+from app.config.database import Base
 
 
 class User(Base):
-    id = Column(String, primary_key=True, default=uuid4)
+    id = Column(Integer, primary_key=True)
     name = Column(String, nullable=True)
     email = Column(String, nullable=True)
     picture = Column(String, nullable=True)
-    total_chip = Column(Integer, nullable=True)
+    chip = Column(Integer, nullable=True)

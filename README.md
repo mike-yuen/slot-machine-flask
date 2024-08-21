@@ -9,8 +9,8 @@
 
 ```bash
 
-# Edit DATABASE_URL in ./config/.env
-DATABASE_URL=postgres://goldfish:123456@postgres:5432/goldfish
+# Edit APPLICATION_POSTGRES_URL in ./config/.env
+APPLICATION_POSTGRES_URL=postgres://goldfish:123456@postgres:5432/goldfish
 ```
 
 ## Install Pre-commit Hooks
