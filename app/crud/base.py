@@ -1,10 +1,8 @@
 from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
 
+from app.config.database import Base, get_db
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
-
-from app.config.database import Base
-from app.config.database import get_db
 
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
@@ -25,9 +23,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def get_one(self, id: Any) -> Optional[ModelType]:
         return self.db.query(self.model).filter(self.model.id == id).first()
 
-    def get(
-        self, *, skip: int = 0, limit: int = 100
-    ) -> List[ModelType]:
+    def get(self, *, skip: int = 0, limit: int = 100) -> List[ModelType]:
         return self.db.query(self.model).offset(skip).limit(limit).all()
 
     def create(self, *, obj_in: CreateSchemaType) -> ModelType:
@@ -39,10 +35,7 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return db_obj
 
     def update(
-        self,
-        *,
-        db_obj: ModelType,
-        obj_in: Union[UpdateSchemaType, Dict[str, Any]]
+        self, *, db_obj: ModelType, obj_in: Union[UpdateSchemaType, Dict[str, Any]]
     ) -> ModelType:
         obj_data = jsonable_encoder(db_obj)
         if isinstance(obj_in, dict):

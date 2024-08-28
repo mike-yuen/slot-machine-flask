@@ -1,4 +1,5 @@
 from typing import Any
+
 from app.crud.base import CRUDBase
 from app.models.user import User
 

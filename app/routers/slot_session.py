@@ -1,20 +1,6 @@
-"""
-This file is work like view.py in DRF
-
-"""
-from typing import Any, List, Optional
-
-from fastapi import APIRouter, Depends, HTTPException, Response
-from fastapi.responses import JSONResponse
-from sqlalchemy import and_, func
-from sqlalchemy.orm import Session
-
-from app.config.database import get_db
-# from app.config.jwt import get_current_user
 from app.crud.slot_session import SlotSessionCrud
-from app.models import user
 from app.schemas.slot_session import SlotSessionReq
-
+from fastapi import APIRouter
 
 router = APIRouter()
 

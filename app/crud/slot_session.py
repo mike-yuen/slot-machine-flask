@@ -1,4 +1,5 @@
 import random
+
 from app.config import settings
 
 

@@ -5,7 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="SlotMachine")
 
 origins = [
-    'http://localhost:5173', 'https://localhost:5173', 'https://mikeyland.netlify.app'
+    "http://localhost:5173",
+    "https://localhost:5173",
+    "https://mikeyland.netlify.app",
 ]
 
 app.add_middleware(
