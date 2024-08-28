@@ -5,7 +5,7 @@ from fastapi import Depends, HTTPException
 from fastapi.openapi.models import OAuthFlows as OAuthFlowsModel
 from fastapi.security import OAuth2
 from fastapi.security.utils import get_authorization_scheme_param
-from requests import Request
+from starlette.requests import Request
 from sqlalchemy.orm import Session
 
 from app.crud.user import UserCrud
@@ -35,7 +35,7 @@ class OAuth2PasswordBearerWithCookie(OAuth2):
         authorization: str = request.cookies.get("access_token")
 
         scheme, param = get_authorization_scheme_param(authorization)
-        print('------', scheme, param)
+
         if not authorization or scheme.lower() != "bearer":
             if self.auto_error:
                 raise HTTPException(
@@ -53,7 +53,7 @@ oauth2_scheme = OAuth2PasswordBearerWithCookie(tokenUrl="/auth/token")
 
 
 def get_current_user(token: str = Depends(oauth2_scheme)):
-    print("---------", db, token)
+    print("---------", token)
     #     credentials_exception = HTTPException(
     #         status_code=status.HTTP_401_UNAUTHORIZED,
     #         detail="Could not validate credentials",
