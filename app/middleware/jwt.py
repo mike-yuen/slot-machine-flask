@@ -8,7 +8,7 @@ from fastapi.security.utils import get_authorization_scheme_param
 from requests import Request
 from sqlalchemy.orm import Session
 
-# from app.crud.base import CRUDBase
+from app.crud.user import UserCrud
 # from app.models import user
 # from app.config import settings
 
@@ -35,6 +35,7 @@ class OAuth2PasswordBearerWithCookie(OAuth2):
         authorization: str = request.cookies.get("access_token")
 
         scheme, param = get_authorization_scheme_param(authorization)
+        print('------', scheme, param)
         if not authorization or scheme.lower() != "bearer":
             if self.auto_error:
                 raise HTTPException(
@@ -51,9 +52,7 @@ class OAuth2PasswordBearerWithCookie(OAuth2):
 oauth2_scheme = OAuth2PasswordBearerWithCookie(tokenUrl="/auth/token")
 
 
-def get_current_user(
-    db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
-):
+def get_current_user(token: str = Depends(oauth2_scheme)):
     print("---------", db, token)
     #     credentials_exception = HTTPException(
     #         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -67,7 +66,7 @@ def get_current_user(
     #             raise credentials_exception
     #     except JWTError:
     #         raise credentials_exception
-    #     user = CRUDBase(user.User).get(db, user_id)
+    #     user = UserCrud().get_user_info(user_id)
     #     if user is None:
     #         raise credentials_exception
     #     return user
