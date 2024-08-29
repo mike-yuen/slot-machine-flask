@@ -53,7 +53,7 @@ def jwt_guard(token: str = Depends(oauth2_scheme)):
     )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        user_email: str = payload.get("email")
+        user_email: str | None = payload.get("email")
         if user_email is None:
             raise credentials_exception
     except JWTError:

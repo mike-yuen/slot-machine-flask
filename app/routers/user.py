@@ -1,4 +1,3 @@
-from app.crud.user import UserCrud
 from app.middleware.jwt import jwt_guard
 from app.models.user import User
 from fastapi import APIRouter, Depends

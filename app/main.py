@@ -8,6 +8,7 @@ origins = [
     "http://localhost:5173",
     "https://localhost:5173",
     "https://mikeyland.netlify.app",
+    "https://slotmachine777.netlify.app",
 ]
 
 app.add_middleware(
