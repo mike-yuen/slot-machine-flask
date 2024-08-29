@@ -10,7 +10,7 @@ from starlette.requests import Request
 from starlette.status import HTTP_401_UNAUTHORIZED
 
 SECRET_KEY = settings.JWT_ACCESS_TOKEN_SECRET
-ALGORITHM = "RS256"
+ALGORITHM = "HS256"
 
 
 class OAuth2PasswordBearerWithCookie(OAuth2):
@@ -53,13 +53,13 @@ def jwt_guard(token: str = Depends(oauth2_scheme)):
     )
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        user_id: str = payload.get("id")
-        if user_id is None:
+        user_email: str = payload.get("email")
+        if user_email is None:
             raise credentials_exception
     except JWTError:
         raise credentials_exception
 
-    user = UserCrud().get_user_info(user_id)
+    user = UserCrud().get_user_info(user_email)
     if user is None:
         raise credentials_exception
     return user

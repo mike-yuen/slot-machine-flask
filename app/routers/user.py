@@ -10,5 +10,4 @@ router = APIRouter()
 def get_me(
     current_user: User = Depends(jwt_guard),
 ):
-    print("current user: ", current_user)
-    return UserCrud().get_user_info(1)
+    return current_user

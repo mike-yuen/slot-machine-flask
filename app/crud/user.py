@@ -1,11 +1,13 @@
 from typing import Any
 
-from app.crud.base import CRUDBase
+from app.config.database import get_db
 from app.models.user import User
 
 
 class UserCrud:
-    def get_user_info(self, id: Any):
-        crud: Any = CRUDBase(User)
-        user = crud.get_one(id=id)
+    def __init__(self):
+        self.db = next(get_db())
+
+    def get_user_info(self, email: Any):
+        user = self.db.query(User).filter(User.email == email).first()
         return user
