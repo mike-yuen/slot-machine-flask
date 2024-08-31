@@ -50,3 +50,4 @@ jwt_*
 
 .mypy_cache
 server.log
+.vercel
