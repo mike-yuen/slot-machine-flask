@@ -12,4 +12,4 @@ def randomize_result(
     body: SlotSessionReq,
     current_user: User = Depends(jwt_guard),
 ):
-    return SlotSessionCrud().run_slot_session()
+    return SlotSessionCrud().randomize_result(current_user, body.bet)
