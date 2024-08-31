@@ -69,7 +69,7 @@ class SlotSessionCrud:
         response["score"] = score
 
         # save slot session with user
-        win = score * bet / 10
+        win = score * bet
         change = win - bet
         response["change"] = change
 
